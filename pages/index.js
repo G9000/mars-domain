@@ -5,6 +5,8 @@ import { ethers } from "ethers";
 import contractAbi from "../utils/contractABI.json";
 import { networks } from "../utils/networks";
 
+import Metamask from "../components/MetamaskLogo";
+
 //constant
 const tld = ".mars";
 const CONTRACT_ADDRESS = "0x29e127C3B3837810251B198e07E5E0f718B31515";
@@ -17,6 +19,7 @@ export default function Home() {
   const [editing, setEditing] = useState(false);
   const [mints, setMints] = useState([]);
   const [loading, setLoading] = useState("");
+  const [toast, setToast] = useState("true");
 
   const connectWallet = async () => {
     try {
@@ -213,9 +216,10 @@ export default function Home() {
       <div className="text-white text-xl"> Wallet not Connected</div>
       <button
         onClick={connectWallet}
-        className="bg-white text-black px-4 py-2 mt-6"
+        className="bg-violet-600 hover:bg-violet-800 text-white rounded-lg px-6 py-4 mt-6 flex items-center gap-x-4"
       >
-        Connect Wallet
+        <span>Connect Metamask Wallet</span>
+        <Metamask />
       </button>
     </div>
   );
@@ -380,6 +384,10 @@ export default function Home() {
     checkIfWalletIsConnected();
   }, []);
 
+  const closeToast = () => {
+    setToast(false);
+  };
+
   return (
     <div className="bg-black min-h-screen">
       <Head>
@@ -413,6 +421,31 @@ export default function Home() {
         {currentAccount && renderInputForm()}
         {mints && renderMints()}
       </main>
+      {toast && (
+        <footer className="bg-white bottom-0 fixed w-full h-[200px] px-16 flex items-center justify-center gap-x-6">
+          <div className="flex flex-col">
+            <span>Change your metamask to Polygon Testnet.</span>
+            <span>
+              To get free matic for testing, use this link{" "}
+              <a
+                className="text-violet-600 underline"
+                href="https://faucet.polygon.technology/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Here
+              </a>
+            </span>
+          </div>
+
+          <button
+            className="bg-violet-600 text-white px-6 py-2"
+            onClick={closeToast}
+          >
+            Close
+          </button>
+        </footer>
+      )}
     </div>
   );
 }
