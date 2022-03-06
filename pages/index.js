@@ -143,7 +143,7 @@ export default function Home() {
     } catch (error) {
       setWaitMinting(false);
       setNotification(true);
-      setCurrentMsg(error.message);
+      setCurrentMsg(error.data.message);
       console.log(error);
     }
   };
