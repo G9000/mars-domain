@@ -23,6 +23,9 @@ export default function Home() {
   const [mints, setMints] = useState([]);
   const [loading, setLoading] = useState("");
   const [toast, setToast] = useState("true");
+  const [gotNotification, setNotification] = useState(false);
+  const [currentMsg, setCurrentMsg] = useState("");
+  const [waitMinting, setWaitMinting] = useState(false);
 
   const connectWallet = async () => {
     try {
@@ -103,6 +106,7 @@ export default function Home() {
         );
 
         console.log("Opening walllet to pay gas fees");
+        setWaitMinting(true);
         let tx = await contract.register(domain, {
           value: ethers.utils.parseEther(price),
         });
@@ -111,6 +115,7 @@ export default function Home() {
 
         // Check if the transaction was successfully completed
         if (receipt.status === 1) {
+          setWaitMinting(false);
           console.log(
             "Domain minted! https://mumbai.polygonscan.com/tx/" + tx.hash
           );
@@ -130,11 +135,15 @@ export default function Home() {
 
           setRecord("");
           setDomain("");
+          setWaitMinting(false);
         } else {
           alert("Transaction failed! Please try again");
         }
       }
     } catch (error) {
+      setWaitMinting(false);
+      setNotification(true);
+      setCurrentMsg(error.message);
       console.log(error);
     }
   };
@@ -281,7 +290,7 @@ export default function Home() {
             disabled={loading}
             onClick={mintDomain}
           >
-            Mint 😊
+            {waitMinting ? "Waiting minting ..." : "Mint 😊"}
           </button>
         )}
       </div>
@@ -426,6 +435,20 @@ export default function Home() {
         {!currentAccount && renderNotConnectedContainer()}
         {currentAccount && renderInputForm()}
         {mints && renderMints()}
+        {gotNotification && (
+          <div
+            className="bg-violet-600 text-white p-6 absolute inset-0 
+        h-[350px] w-[450px] m-auto z-50 flex flex-col justify-between"
+          >
+            <span className="text-xl">{currentMsg}</span>
+            <button
+              className="bg-white text-violet-600 py-4"
+              onClick={() => setNotification(false)}
+            >
+              Close
+            </button>
+          </div>
+        )}
       </main>
       {toast && (
         <footer className="bg-white bottom-0 fixed w-full h-[200px] px-16 flex items-center justify-center gap-x-6">
