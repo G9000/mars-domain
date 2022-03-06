@@ -209,12 +209,11 @@ export default function Home() {
   };
 
   const renderNotConnectedContainer = () => (
-    <div className="connect-wallet-container">
-      <div className="text-white"> Wallet not Connected</div>
-      {/* Call the connectWallet function we just wrote when the button is clicked */}
+    <div className="max-w-[1440px] w-full h-[400px] mx-auto flex flex-col items-center justify-center">
+      <div className="text-white text-xl"> Wallet not Connected</div>
       <button
         onClick={connectWallet}
-        className="cta-button connect-wallet-button"
+        className="bg-white text-black px-4 py-2 mt-6"
       >
         Connect Wallet
       </button>
@@ -227,7 +226,7 @@ export default function Home() {
       return (
         <div className="connect-wallet-container">
           <p>Please connect to Polygon Mumbai Testnet</p>
-          <button className="cta-button mint-button" onClick={switchNetwork}>
+          <button className="" onClick={switchNetwork}>
             Click here to switch
           </button>
         </div>
@@ -256,15 +255,11 @@ export default function Home() {
         />
         {editing ? (
           <div className="bg-white text-black">
-            <button
-              className="cta-button mint-button"
-              disabled={loading}
-              onClick={updateDomain}
-            >
+            <button className="" disabled={loading} onClick={updateDomain}>
               Set record
             </button>
             <button
-              className="cta-button mint-button"
+              className=""
               onClick={() => {
                 setEditing(false);
               }}
