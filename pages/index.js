@@ -12,7 +12,7 @@ import PolygonLogo from "../components/PolygonLogo";
 
 //constant
 const tld = ".mars";
-const CONTRACT_ADDRESS = "0x29e127C3B3837810251B198e07E5E0f718B31515";
+const CONTRACT_ADDRESS = "0xd0Ca70e59761fB04A45fe6D3678962fBcaEa5A76";
 
 export default function Home() {
   const [currentAccount, setCurrentAccount] = useState("");
