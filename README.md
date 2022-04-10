@@ -3,3 +3,4 @@
 Must have metamask and connecto Polygon Testnet Mumbai
 
 I made mistake using VITE. VITE don't support nodejs builtins so I cant deploy it yet.
+So run it locally
