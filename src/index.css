@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&family=Poppins:wght@400;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+  @apply text-2xl
+}
+
+@screen md {
+  h1 {
+    @apply text-4xl;
+  }
+}
+
+
+
+:root {
+    --brandBlack: hsla(240, 7%, 6%, 1);
+    --brandGrey: hsla(0, 5%, 71%, 1);
+    --brandOrange: hsla(7, 85%, 57%, 1);
+    --brandPurple: hsla(252, 85%, 57%, 1);
+}
+
+
+.hidden-visually {
+  position: absolute;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  height: 1px;
+  width: 1px;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+}
