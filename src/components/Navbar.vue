@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, inject, watch, watchEffect } from 'vue'
 import BaseBadge from './BaseBadge.vue';
 import BaseIcon from './BaseIcon.vue'
 
@@ -13,7 +13,11 @@ const badgeText = computed(() => {
     return props.wallet ? props.wallet.slice(0, 6) + '. . .' + props.wallet.slice(-4): "metamask not connected"
 })
 
-console.log(props.network)
+const network = inject('network')
+
+watchEffect(() => {
+    console.log('network', network)
+})
 
 </script>
 

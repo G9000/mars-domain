@@ -8,6 +8,7 @@ import { mintDomain } from '../hooks/mintDomain'
 
 interface propsType {
   wallet?: string;
+  network: string;
 }
 const props = defineProps<propsType>();
 const domain = reactive({
@@ -70,6 +71,9 @@ const resetForm = () => {
     domain.details = ''
 }
 
+function goTestnet() {
+    window.open('https://medium.com/stakingbits/how-to-connect-polygon-mumbai-testnet-to-metamask-fc3487a3871f', '_blank')?.focus()
+}
 
 </script>
 
@@ -108,12 +112,17 @@ const resetForm = () => {
                                 v-model="domain.details"
                             />
                         </div>
-                        <BaseButton v-if="props.wallet" label="MINT DOMAIN" color="primary" size="base" type="submit" value="Submit">
+                        <BaseButton v-if="props.wallet && props.network !== 'Polygon Mumbai Testnet'" label="CONNECT TO TESTNET" color="primary" size="base" @click="goTestnet()">
                             <BaseIcon name="metamask" size="base">
                                 <Star />
                             </BaseIcon>
                         </BaseButton>
-                        <BaseButton v-else label="CONNECT METAMASK" color="secondary" size="base" @click="getWallet()">
+                        <BaseButton v-if="props.wallet && props.network === 'Polygon Mumbai Testnet'" label="MINT DOMAIN" color="primary" size="base" type="submit" value="Submit">
+                            <BaseIcon name="metamask" size="base">
+                                <Star />
+                            </BaseIcon>
+                        </BaseButton>
+                        <BaseButton v-else-if="!props.wallet" label="CONNECT METAMASK" color="secondary" size="base" @click="getWallet()">
                             <BaseIcon name="metamask" size="base">
                                 <Metamask />
                             </BaseIcon>

@@ -24,7 +24,7 @@ onBeforeMount( async () => {
 
 <template>
     <Navbar :wallet="wallet" :network="connectedNetwork" />
-    <Hero :wallet="wallet"/>
+    <Hero :wallet="wallet" :network="connectedNetwork"/>
     <Pathfinder v-if="wallet" :pathfinders="pathfinderList" />
 </template>
 
