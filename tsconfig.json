@@ -11,7 +11,7 @@
     "isolatedModules": false, // need to turn off coz of vite bug https://github.com/vitejs/vite/pull/7304
     "skipLibCheck": true, // need to turn on coz of bug
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
+    "lib": ["esnext", "dom"]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]
