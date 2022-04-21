@@ -49,7 +49,7 @@ export const mintDomain = async (payload: {
 
         // Call fetchMints after 2 seconds
         setTimeout(() => {
-          fetchMints(CONTRACT_ADDRESS);
+          fetchMints(payload.address);
         }, 2000);
 
         console.log("sucesss");
