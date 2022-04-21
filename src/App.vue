@@ -5,7 +5,7 @@ import { connectWallet, checkIfWalletIsConnected } from "./hooks/connectWallet";
 const wallet = ref<string | null>(null);
 const connectedAccount = ref<string | null>(null);
 const connectedNetwork = ref<string | null>(null);
-provide("CONTRACT_ADDRESS", "0xd0Ca70e59761fB04A45fe6D3678962fBcaEa5A76");
+provide("CONTRACT_ADDRESS", "0xdd93312B4bB4492b6483E6321E585ed8f552491A");
 
 onBeforeMount(async () => {
   wallet.value = await connectWallet();
