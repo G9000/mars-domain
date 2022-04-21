@@ -1,13 +1,15 @@
 <script setup lang="ts">
+import { onBeforeMount, inject, ref } from "vue";
 import BaseIcon from "./BaseIcon.vue";
 import { pathfinderType } from "../types/main";
 
 const props = defineProps<{
   pathfinders: pathfinderType;
 }>();
+const CONTRACT_ADDRESS = inject("CONTRACT_ADDRESS") as string;
 
 const openSeaLink = (id: number) => {
-  return `https://testnets.opensea.io/assets/mumbai/0xdd93312B4bB4492b6483E6321E585ed8f552491A/${id}`;
+  return `https://testnets.opensea.io/assets/mumbai/${CONTRACT_ADDRESS}/${id}`;
 };
 </script>
 
