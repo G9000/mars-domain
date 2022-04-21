@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { computed, reactive, ref } from "vue";
+import { computed, reactive, ref, inject } from "vue";
 import BaseButton from "./BaseButton.vue";
 import BaseIcon from "./BaseIcon.vue";
 import { getWallet } from "../hooks/connectWallet";
 import { mintDomain } from "../hooks/mintDomain";
 import HeroImg from "../assets/mars.png";
+
+const CONTRACT_ADDRESS = inject("CONTRACT_ADDRESS") as string;
 
 interface propsType {
   wallet?: string;
@@ -14,6 +16,7 @@ const props = defineProps<propsType>();
 const domain = reactive({
   name: "",
   details: "",
+  address: CONTRACT_ADDRESS,
 });
 
 // const btnColor = computed(() => {
