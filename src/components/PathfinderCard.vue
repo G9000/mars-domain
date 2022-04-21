@@ -7,7 +7,7 @@ const props = defineProps<{
 }>();
 
 const openSeaLink = (id: number) => {
-  return `https://testnets.opensea.io/assets/mumbai/0xd0Ca70e59761fB04A45fe6D3678962fBcaEa5A76/${id}`;
+  return `https://testnets.opensea.io/assets/mumbai/0xdd93312B4bB4492b6483E6321E585ed8f552491A/${id}`;
 };
 </script>
 
