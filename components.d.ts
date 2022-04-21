@@ -13,6 +13,7 @@ declare module 'vue' {
     Navbar: typeof import('./src/components/Navbar.vue')['default']
     OpenSea: typeof import('./src/components/icons/OpenSea.vue')['default']
     Pathfinder: typeof import('./src/components/Pathfinder.vue')['default']
+    PathfinderCard: typeof import('./src/components/PathfinderCard.vue')['default']
     Polygon: typeof import('./src/components/icons/Polygon.vue')['default']
     Star: typeof import('./src/components/icons/Star.vue')['default']
   }
