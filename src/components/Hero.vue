@@ -4,6 +4,7 @@ import BaseButton from "./BaseButton.vue";
 import BaseIcon from "./BaseIcon.vue";
 import { getWallet } from "../hooks/connectWallet";
 import { mintDomain } from "../hooks/mintDomain";
+import HeroImg from "../assets/mars.png";
 
 interface propsType {
   wallet?: string;
@@ -80,12 +81,16 @@ function goTestnet() {
     )
     ?.focus();
 }
+
+const heroImage = computed(() => {
+  return `background-image: url(${HeroImg})`;
+});
 </script>
 
 <template>
   <div
     class="min-h-screen h-full w-full flex items-center justify-center bg-top bg-contain bg-no-repeat px-6 md:px-10"
-    style="background-image: url('/src/assets/mars.png')"
+    :style="heroImage"
   >
     <div class="h-screen flex items-center justify-center w-full">
       <div class="flex flex-col items-center gap-y-6">
