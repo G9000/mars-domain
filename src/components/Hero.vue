@@ -4,6 +4,7 @@ import BaseButton from "./BaseButton.vue";
 import BaseIcon from "./BaseIcon.vue";
 import { getWallet } from "../hooks/connectWallet";
 import { mintDomain } from "../hooks/mintDomain";
+import { fetchMints } from "../hooks/fetchMint";
 import HeroImg from "../assets/mars.png";
 
 const CONTRACT_ADDRESS = inject("CONTRACT_ADDRESS") as string;
@@ -47,14 +48,14 @@ const minting = async () => {
     isMinting.value = true;
     console.log("Domain proncessing");
     const mintRes = await mintDomain(domain);
-
     if (mintRes && mintRes.code === 200) {
       isMinting.value = false;
+      fetchMints(CONTRACT_ADDRESS);
     } else if (mintRes && mintRes.code === 400) {
       isMinting.value = false;
       console.log("You kinda poor");
       isError.value = true;
-      errorMsg.value = "Insufficient fund";
+      errorMsg.value = "Insufficient fund. Please get some matic";
     } else if (mintRes && mintRes.code === 500) {
       isMinting.value = false;
       console.log("Sun fried our system");

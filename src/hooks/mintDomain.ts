@@ -56,11 +56,11 @@ export const mintDomain = async (payload: {
         return { code: 200, data: tx.hash };
       } else {
         console.log("fail");
-        return { code: 400, data: null };
+        return { code: 500, data: null };
       }
     }
   } catch (error) {
     console.log("error");
-    return { code: 500, data: error };
+    return { code: 400, data: error };
   }
 };
